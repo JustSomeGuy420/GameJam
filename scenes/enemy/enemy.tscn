@@ -1,100 +1,48 @@
-[gd_scene load_steps=15 format=3 uid="uid://0cwh8ev7fkgh"]
+[gd_scene load_steps=7 format=3 uid="uid://0cwh8ev7fkgh"]
 
 [ext_resource type="Script" path="res://enemy.gd" id="1_yk4hp"]
-[ext_resource type="Texture2D" uid="uid://dmnr01b8gl3nl" path="res://assets/2D-Pixel-Art-Character-Template/Idle/Player Idle 48x48.png" id="2_vahhu"]
+[ext_resource type="Texture2D" uid="uid://nolvlpolbt7" path="res://assets/ANIMATIONS/ZOMBUBBLE/1.PNG" id="2_25pa8"]
+[ext_resource type="Texture2D" uid="uid://dknm06gdm8wpw" path="res://assets/ANIMATIONS/ZOMBUBBLE/2.PNG" id="3_mh7rw"]
+[ext_resource type="Texture2D" uid="uid://dyee3xgv8kqev" path="res://assets/ANIMATIONS/ZOMBUBBLE/3.PNG" id="4_3n286"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xte3h"]
-atlas = ExtResource("2_vahhu")
-region = Rect2(0, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_npgdb"]
-atlas = ExtResource("2_vahhu")
-region = Rect2(48, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w4qei"]
-atlas = ExtResource("2_vahhu")
-region = Rect2(96, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_umb58"]
-atlas = ExtResource("2_vahhu")
-region = Rect2(144, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kyt6h"]
-atlas = ExtResource("2_vahhu")
-region = Rect2(192, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_h4o8v"]
-atlas = ExtResource("2_vahhu")
-region = Rect2(240, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wj2qa"]
-atlas = ExtResource("2_vahhu")
-region = Rect2(288, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_giq87"]
-atlas = ExtResource("2_vahhu")
-region = Rect2(336, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6xa34"]
-atlas = ExtResource("2_vahhu")
-region = Rect2(384, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_da3ns"]
-atlas = ExtResource("2_vahhu")
-region = Rect2(432, 0, 48, 48)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_m1tq1"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_ppwvv"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xte3h")
+"texture": ExtResource("2_25pa8")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_npgdb")
+"texture": ExtResource("3_mh7rw")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_w4qei")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_umb58")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kyt6h")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_h4o8v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wj2qa")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_giq87")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6xa34")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_da3ns")
+"texture": ExtResource("4_3n286")
 }],
 "loop": true,
-"name": &"idle",
+"name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bfpl6"]
-radius = 6.0
-height = 28.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sosxl"]
+height = 32.0
 
 [node name="Enemy" type="CharacterBody2D"]
 scale = Vector2(1.5, 1.5)
+collision_layer = 9
 collision_mask = 2
 script = ExtResource("1_yk4hp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-sprite_frames = SubResource("SpriteFrames_m1tq1")
-animation = &"idle"
+position = Vector2(2, -0.666667)
+scale = Vector2(0.08, 0.08)
+sprite_frames = SubResource("SpriteFrames_ppwvv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
-shape = SubResource("CapsuleShape2D_bfpl6")
+position = Vector2(0.666667, -2)
+shape = SubResource("CapsuleShape2D_sosxl")
+
+[node name="Health" type="Label" parent="."]
+offset_left = -0.666667
+offset_right = 39.3333
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.0570404, 0.0283419, 0.0030734, 1)
